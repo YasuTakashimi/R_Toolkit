@@ -1,4 +1,4 @@
-# R_Lab.ijm — User Manual
+# R_Calc.ijm — User Manual
 
 *[日本語版はこちら](README_ja.md)*
 
@@ -10,7 +10,7 @@
 
 ## Table of Contents
 
-1. [What is R_Lab?](#1-what-is-r_lab)
+1. [What is R_Calc?](#1-what-is-r_calc)
 2. [Citation](#2-citation)
 3. [Requirements](#3-requirements)
 4. [Folder Structure](#4-folder-structure)
@@ -27,17 +27,18 @@
 
 ---
 
-## 1. What is R_Lab?
+## 1. What is R_Calc?
 
-R_Lab.ijm is an ImageJ macro that semi-automatically calculates the roundness parameter *R* of particles (gravel, sand grains, industrial powders, microplastics, crushed stone, railway ballast, etc.) from optical photographs, microscope images, and scanner images.
+R_Calc.ijm is an ImageJ macro that semi-automatically calculates the roundness parameter *R* of particles (gravel, sand grains, industrial powders, microplastics, crushed stone, railway ballast, etc.) from optical photographs, microscope images, and scanner images.
+
+R_Calc.ijm is a simplified version of R_Lab.ijm. **It does not perform scale calibration (pixels / mm) and calculates *R* values in pixel units only.** Use R_Calc when actual grain size in mm is not required, or when working with images that lack scale information. If scale calibration and mm-unit output are needed, use R_Lab.ijm instead.
 
 ### Key Features
 
-- Scale calibration (pixels / mm)
 - Removal of unwanted objects (labels, scale bars, dust, etc.)
 - Automatic binarization using the Otsu method
 - Automatic particle detection and shape measurement
-- CSV output of *R* values, grain size, and aspect ratio
+- CSV output of *R* values and aspect ratio (pixel units)
 - Re-analysis and version management per sample
 
 ### What is *R*?
@@ -48,7 +49,7 @@ R_Lab.ijm is an ImageJ macro that semi-automatically calculates the roundness pa
 
 ## 2. Citation
 
-When publishing research using R_Lab.ijm, please cite the following paper:
+When publishing research using R_Calc.ijm, please cite the following paper:
 
 > Takashimizu, Y. & Iiyoshi, M., 2016,  
 > New parameter of roundness *R*: circularity corrected by aspect ratio.  
@@ -71,22 +72,22 @@ Fiji is available free of charge at [https://fiji.sc](https://fiji.sc).
 
 ## 4. Folder Structure
 
-Before using R_Lab, prepare the following folder structure:
+Before using R_Calc, prepare the following folder structure:
 
 ```
 Any folder (project folder)/
-├── input_R_Lab/              ← Place image data here (name is fixed)
+├── input_R_Calc/              ← Place image data here (name is fixed)
 │   ├── SampleA/              ← Sample folder (any name)
 │   │   ├── image001.jpg
 │   │   └── image002.jpg
 │   └── SampleB/
 │       └── image001.jpg
-└── output_R_Lab/             ← Created automatically (name is fixed)
+└── output_R_Calc/             ← Created automatically (name is fixed)
 ```
 
 ### Folder and File Naming Rules
 
-- The names `input_R_Lab` and `output_R_Lab` **cannot be changed**
+- The names `input_R_Calc` and `output_R_Calc` **cannot be changed**
 - **Commas (,) cannot be used** in sample folder names or image file names
 - Sample folder names cannot contain `..`, `/`, or `\`
 - Supported image formats: JPG, JPEG, TIF, TIFF, BMP, PNG
@@ -105,11 +106,11 @@ For accurate roundness measurement, it is important to prepare images in which p
 ## 6. Installation
 
 1. Launch Fiji
-2. Drag and drop `R_Lab.ijm` onto the Fiji window
+2. Drag and drop `R_Calc.ijm` onto the Fiji window
 3. The Script Editor will open
 4. Click the `Run` button to execute
 
-Alternatively, select `R_Lab.ijm` from the menu via `Plugins > Macros > Run...`.
+Alternatively, select `R_Calc.ijm` from the menu via `Plugins > Macros > Run...`.
 
 ---
 
@@ -121,10 +122,10 @@ When the macro is executed, author information and citation details are displaye
 
 ---
 
-### Step 2: Select the `input_R_Lab` Folder
+### Step 2: Select the `input_R_Calc` Folder
 
-A dialog opens to select the `input_R_Lab` folder.  
-**An error will occur if the folder name is not `input_R_Lab`.**
+A dialog opens to select the `input_R_Calc` folder.  
+**An error will occur if the folder name is not `input_R_Calc`.**
 
 ---
 
@@ -178,22 +179,7 @@ The analysis completion timestamp for each version is shown next to the version 
 
 ---
 
-### Step 5: Scale Calibration (per image)
-
-Set the scale for each image.
-
-1. A reference length selection dialog opens (15, 12, 10, 5, 2, 1 cm, or custom input)
-2. Draw a line along the scale bar in the image using the Line tool
-3. Confirm in the "Confirm Calibration" dialog:
-   - `OK - proceed`: accept and continue
-   - `Redo - draw the line again`: redraw the line
-   - `Change reference length`: select a different reference length
-
-> **Note:** For custom input, enter a positive number in cm. Zero, negative values, and strings are not accepted.
-
----
-
-### Step 6: Removal of Unwanted Objects (per image)
+### Step 5: Removal of Unwanted Objects (per image)
 
 Remove unwanted objects — scale bars, labels, dust, etc. — by painting them white.
 
@@ -210,18 +196,18 @@ If OK is pressed without a selection:
 
 ---
 
-### Step 7: Automated Processing (Binarization → Particle Detection → *R* Calculation)
+### Step 6: Automated Processing (Binarization → Particle Detection → *R* Calculation)
 
 The following steps run automatically:
 
 1. **Automatic binarization** using the Otsu method
-2. **Save binarized PNG** (in the `output_R_Lab/SampleA/` folder)
+2. **Save binarized PNG** (in the `output_R_Calc/SampleA/` folder)
 3. **Particle detection** via Analyze Particles
 4. ***R* value calculation** and CSV output
 
 ---
 
-### Step 8: Completion Dialog
+### Step 7: Completion Dialog
 
 When all samples have been processed, the total detected particles, valid particles, and exclusion rate are displayed.
 
@@ -232,7 +218,7 @@ When all samples have been processed, the total detected particles, valid partic
 ### Folder Structure
 
 ```
-output_R_Lab/
+output_R_Calc/
 ├── SampleA/                      ← Binarized PNGs (per sample)
 │   ├── image001.png
 │   └── image002.png
@@ -243,7 +229,7 @@ output_R_Lab/
 With re-analysis (Keep mode):
 
 ```
-output_R_Lab/
+output_R_Calc/
 ├── SampleA/                      ← First run
 ├── SampleA_v2/                   ← Second run
 ├── Particle_R_SampleA.csv
@@ -260,17 +246,14 @@ output_R_Lab/
 | FolderName | Sample folder name |
 | FileName | Original image file name |
 | ParticleID | Sequential particle number within the image (valid particles only) |
-| Scale_pxPerMm | Scale (pixels / mm) |
 | Area_px2 | Particle area (px²) |
 | Perimeter_px | Particle perimeter (px) |
 | Major_px | Major axis length of the best-fit ellipse to the particle silhouette (px) |
 | Minor_px | Minor axis length of the best-fit ellipse to the particle silhouette (px) |
-| D_arith_mm | Arithmetic mean diameter (mm) = (Major + Minor) / 2 |
-| D_geo_mm | Geometric mean diameter (mm) = √(Major × Minor) |
-| D_Feret_min_mm | Minimum Feret diameter (mm) |
-| D_Feret_max_mm | Maximum Feret diameter (mm) |
 | AR_I | Aspect ratio (Major / Minor) |
 | R | Roundness parameter *R* |
+
+> **Note:** R_Calc.ijm does not perform scale calibration; all measurements are in pixel units. If grain size in mm is required, use R_Lab.ijm instead.
 
 ---
 
@@ -317,10 +300,10 @@ Particles meeting the following conditions are excluded from calculation and cou
 
 | Condition | Reason |
 |-----------|--------|
-| Major < 100 px | Pixelation error is too large for reliable shape measurement. This also means that small scratches or particles in the background of the digital image are automatically excluded. Conversely, any object with Major > 100 px is treated as a particle. Remove scale bars and large scratches in Step 6. |
+| Major < 100 px | Pixelation error is too large for reliable shape measurement. This also means that small scratches or particles in the background of the digital image are automatically excluded. Conversely, any object with Major > 100 px is treated as a particle. Remove scale bars and large scratches in Step 5. |
 | AR > 10 | Too elongated to be meaningful as a roundness indicator |
 
-> **Recommendation:** Set the magnification and resolution so that particle images have a major axis of at least 100 px. The Confirm Calibration dialog displays "100 px = X mm" as a reference value, which can help you verify that the target particle size range is not being excluded.
+> **Recommendation:** Set the magnification and resolution so that particle images have a major axis of at least 100 px.
 
 ---
 
@@ -353,19 +336,19 @@ All checkboxes in the deletion dialog default to unchecked, minimizing the risk 
 
 - **Commas cannot be used** in folder or file names (CSV output will be corrupted)
 - Folder names cannot contain `..`, `/`, or `\`
-- A maximum of **100** sample folders are supported within a single `input_R_Lab` folder
+- A maximum of **100** sample folders are supported within a single `input_R_Calc` folder
 - Up to **50** re-analysis versions are managed per sample (`_v2` through `_v51`)
-- Enter a positive number for custom scale calibration input
+- R_Calc.ijm does not perform scale calibration; grain size in mm units is not output
 
 ---
 
 ## 13. FAQ
 
-**Q. I get the error "The selected folder must be named 'input_R_Lab'"**  
-A. Please select a folder named `input_R_Lab`. If the spelling differs, rename the folder accordingly.
+**Q. I get the error "The selected folder must be named 'input_R_Calc'"**  
+A. Please select a folder named `input_R_Calc`. If the spelling differs, rename the folder accordingly.
 
 **Q. No particles are detected at all**  
-A. The scale calibration line may be too short or drawn in the wrong location. Also check the saved PNG to verify that the image was binarized correctly.
+A. Check the saved PNG to verify that the image was binarized correctly. Also confirm that particles were not accidentally painted white during Step 5.
 
 **Q. The Summary CSV has multiple rows for the same sample name**  
 A. This is the record of multiple analyses of the same sample (Keep mode or re-analysis after deletion). Use the RunTimestamp column to distinguish between runs.
@@ -373,8 +356,8 @@ A. This is the record of multiple analyses of the same sample (Keep mode or re-a
 **Q. A large number of particles are excluded**  
 A. Check the ExcludedMajor column in the Summary CSV. If many particles have Major < 100 px, consider increasing the magnification or using a higher-resolution scanner.
 
-**Q. I entered a custom scale length and got an error**  
-A. Enter a numeric value in cm (e.g., `10.5`). Zero, negative values, and strings are not accepted.
+**Q. I also want grain size output in mm**  
+A. Use R_Lab.ijm, which includes scale calibration. R_Lab.ijm outputs arithmetic mean diameter, geometric mean diameter, and minimum/maximum Feret diameter in millimeters.
 
 ---
 
