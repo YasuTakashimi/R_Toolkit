@@ -24,6 +24,7 @@
 12. [Notes and Limitations](#12-notes-and-limitations)
 13. [FAQ](#13-faq)
 14. [License](#14-license)
+15. [Support & Feedback](#15-support--feedback)
 
 ---
 
@@ -104,12 +105,27 @@ For accurate roundness measurement, it is important to prepare images in which p
 
 ## 6. Installation
 
+### Quick Test (First Time)
+
+If you want to try the macro before installing:
+
 1. Launch Fiji
 2. Drag and drop `R_Lab.ijm` onto the Fiji window
 3. The Script Editor will open
-4. Click the `Run` button to execute
+4. Click the **Run** button (or press Ctrl+R) to execute
 
 Alternatively, select `R_Lab.ijm` from the menu via `Plugins > Macros > Run...`.
+
+### Permanent Installation (Regular Use)
+
+Once you are satisfied with the macro, install it permanently so it is always accessible from the menu:
+
+1. Launch Fiji
+2. Drag and drop `R_Lab.ijm` onto the Fiji window
+3. The Script Editor will open
+4. Click the **Install** button
+5. R_Lab will appear in the **Plugins** menu
+6. You can run it anytime via **Plugins → R_Lab**
 
 ---
 
@@ -407,3 +423,17 @@ SOFTWARE.
 ---
 
 *The scientific design and validation of this macro were performed entirely by the author. AI coding assistance (Claude, Anthropic) was used during development.*
+
+---
+
+## 15. Support & Feedback
+
+If you encounter bugs, have questions, or want to suggest improvements, please open an Issue on GitHub:
+
+→ [https://github.com/Yasu-Takashimi/R_Toolkit/issues](https://github.com/Yasu-Takashimi/R_Toolkit/issues)
+
+When reporting a bug, please include:
+- Error message (if any)
+- Steps to reproduce the issue
+- ImageJ/Fiji version
+- Sample image (if possible)
