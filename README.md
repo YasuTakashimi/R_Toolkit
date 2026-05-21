@@ -12,9 +12,9 @@ R_Toolkit provides two ImageJ macros for semi-automatic measurement of particle 
 ## Documentation
 
 - [R_Lab Documentation](R_Lab/README.md) (English)
-- [R_Lab ドキュメント](R_Lab/README_ja.md) (日本語)
+- [R_Lab Documentation](R_Lab/README_ja.md) (in Japanese)
 - [R_Calc Documentation](R_Calc/README.md) (English)
-- [R_Calc ドキュメント](R_Calc/README_ja.md) (日本語)
+- [R_Calc Documentation](R_Calc/README_ja.md) (in Japanese)
 
 ## Citation
 
