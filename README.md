@@ -1,5 +1,5 @@
 # R_Toolkit (β version)
-![beta](https://img.shields.io/badge/R_Toolkit-β版_開発中-yellow)
+![beta](https://img.shields.io/badge/R_Toolkit-β版_開発中-green)
 
 
 ImageJ macro toolset for calculating the roundness parameter R from particle images.
