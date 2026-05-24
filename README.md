@@ -1,6 +1,8 @@
-# R_Toolkit
+# R_Toolkit (β version)
 
 ImageJ macro toolset for calculating the roundness parameter R from particle images.
+> **⚠️ This software is currently under development and released as a β version.  
+> 機能は開発中であり、β版として提供されています。**
 
 ## About
 
